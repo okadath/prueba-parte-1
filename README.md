@@ -11,7 +11,8 @@ y abrir la url
 
 en ese link se encuentra la Notebook con el codigo python que se ejecuto para el proyecto
 
-
+tambien se puede ver en este repositorio en el link siguiente
+[SCRIPT](https://github.com/okadath/prueba-parte-1/blob/master/work/prueba.ipynb)
 ## carga:
 
 Se eligio una db de Postgres, al ser la mas comun a usarse en el ambiente de python/linux y poseer buenas librerias y en los scripts se utilizo el lenguaje SQL para Postgres(posee pequeñas variaciones de palabras reservadas) 
