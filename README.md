@@ -37,20 +37,35 @@ habia muchos datos sucios, en el Notebook de python en el que se realizaron las 
 
 
 ## dispersion 
-![swagger](https://raw.githubusercontent.com/okadath/a.png)
+![tabla_companies](https://raw.githubusercontent.com/okadath/prueba-parte-1/refs/heads/master/companies.png)
 
-
+se crearon las dos tablas con comandos SQL ejecutados desde python
+```SQL
+CREATE TABLE IF NOT EXISTS companies (
+    company_id VARCHAR(40) PRIMARY KEY,
+    company_name VARCHAR(130) UNIQUE NOT NULL
+); 
+CREATE TABLE IF NOT EXISTS charges (
+    charge_id VARCHAR(40) PRIMARY KEY,
+    amount DECIMAL(16,2) NOT NULL,
+    status VARCHAR(30) NOT NULL,
+    created_at TIMESTAMP NOT NULL,
+    paid_at TIMESTAMP NULL,
+    company_id VARCHAR(40) NOT NULL,
+    FOREIGN KEY (company_id) REFERENCES companies(company_id)
+);
+```
 
 ## SQL
 
 se agrego la vista usando codigo SQL por medio del script de python basandose en los cargos que ya estuvieran con el estado de paid, se muestra su evaluacion en el script
 
-![swagger](https://raw.githubusercontent.com/okadath/a.png)
+![vista](https://raw.githubusercontent.com/okadath/prueba-parte-1/refs/heads/master/vista.png)
 
 
-## parte 2
+# Parte 2
 
 La parte2 se subio en un repositorio separado con su propio contenedor de Docker
 
 
-[url](url) 
+[prueba parte 2 https://github.com/okadath/prueba-parte-2](https://github.com/okadath/prueba-parte-2)
