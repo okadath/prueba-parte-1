@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:latest
+    container_name: postgres_container
+    environment:
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
+      POSTGRES_DB: mydb
+    ports:
+      - "5433:5432"   
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - mynetwork
+
+  jupyter:
+    build: .
+    container_name: jupyter_container
+    environment:
+      JUPYTER_TOKEN: ''  # Desactiva el token
+    ports:
+      - "8888:8888"   
+    volumes:
+      - ./work:/home/jovyan/work  
+    depends_on:
+      - postgres
+    networks:
+      - mynetwork
+    command: bash -c "chown -R jovyan:users /home/jovyan/work &&  start-notebook.sh --NotebookApp.token='' --NotebookApp.password='' --NotebookApp.default_url='/prueba.ipynb'"
+  
+volumes:
+  postgres_data:
+
+networks:
+  mynetwork:
+    driver: bridge
